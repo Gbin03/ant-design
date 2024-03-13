@@ -231,7 +231,7 @@ export default class Layout extends React.Component<LayoutPropsType, LayoutState
       // eslint-disable-next-line react/jsx-no-constructed-context-values
       <SiteContext.Provider value={{ isMobile, direction, theme, setTheme, setIframeTheme }}>
         <HelmetProvider context={helmetContext}>
-          <Helmet encodeSpecialCharacters={false}>
+          {/* <Helmet encodeSpecialCharacters={false}>
             <html
               lang={appLocale.locale === 'zh-CN' ? 'zh' : 'en'}
               data-direction={direction}
@@ -249,7 +249,7 @@ export default class Layout extends React.Component<LayoutPropsType, LayoutState
               property="og:image"
               content="https://gw.alipayobjects.com/zos/rmsportal/rlpTLlbMzTNYuZGGCVYM.png"
             />
-          </Helmet>
+          </Helmet> */}
           <IntlProvider
             locale={appLocale.locale}
             messages={appLocale.messages}
@@ -259,8 +259,8 @@ export default class Layout extends React.Component<LayoutPropsType, LayoutState
               locale={appLocale.locale === 'zh-CN' ? zhCN : undefined}
               direction={direction}
             >
-              <Header {...restProps} changeDirection={this.changeDirection} />
-              {children}
+              {/* <Header {...restProps} changeDirection={this.changeDirection} /> */}
+              <div className='aaabbbccc'>{children}</div>
             </ConfigProvider>
           </IntlProvider>
         </HelmetProvider>

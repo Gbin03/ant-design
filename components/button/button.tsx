@@ -167,6 +167,8 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
   const [innerLoading, setLoading] = React.useState<Loading>(!!loading);
   const [hasTwoCNChar, setHasTwoCNChar] = React.useState(false);
   const { getPrefixCls, autoInsertSpaceInButton, direction } = React.useContext(ConfigContext);
+  console.log("autoInsertSpaceInButton===:", autoInsertSpaceInButton) //为undefined
+  console.log("direction===:", direction) //为'ltr', 使用的是/workspaces/ant-design/site/theme/template/Layout/index.tsx中的ConfigProvider设置的direction
   const buttonRef = (ref as any) || React.createRef<HTMLElement>();
   const isNeedInserted = () =>
     React.Children.count(children) === 1 && !icon && !isUnBorderedButtonType(type);
@@ -176,6 +178,7 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
     if (!buttonRef || !buttonRef.current || autoInsertSpaceInButton === false) {
       return;
     }
+
     const buttonText = buttonRef.current.textContent;
     if (isNeedInserted() && isTwoCNChar(buttonText)) {
       if (!hasTwoCNChar) {
@@ -236,7 +239,7 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
   );
 
   const prefixCls = getPrefixCls('btn', customizePrefixCls);
-  const autoInsertSpace = autoInsertSpaceInButton !== false;
+  const autoInsertSpace = autoInsertSpaceInButton !== false; //autoInsertSpace为true
   const { compactSize, compactItemClassnames } = useCompactItemContext(prefixCls, direction);
 
   const sizeClassNameMap = { large: 'lg', small: 'sm', middle: undefined };
